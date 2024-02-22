@@ -21,9 +21,17 @@ public class Enunciado1 {
             Document document = documentBuilder.parse(file);
 
             Element elementoraiz = document.getDocumentElement();
-            NodeList libro = elementoraiz.getElementsByTagName("libro");
-            for (int i = 0; i< libro.getLength();i++){
-                
+            NodeList libros = elementoraiz.getElementsByTagName("libro");
+            for (int i = 0; i< libros.getLength();i++){
+                Element elementolibro = (Element) libros.item(i);
+                Element elementoTitulo = (Element) elementolibro.getElementsByTagName("titulo").item(0);
+                System.out.println("Titulo: "+ elementoTitulo.getTextContent());
+                Element elementoAutor = (Element) elementolibro.getElementsByTagName("autor").item(0);
+                System.out.println("Autor: "+elementoAutor.getTextContent());
+                Element elementoGenero = (Element) elementolibro.getElementsByTagName("genero").item(0);
+                System.out.println("Género: "+ elementoGenero.getTextContent());
+                Element elementoanio = (Element) elementolibro.getElementsByTagName("anio").item(0);
+                System.out.println("Año:"+ elementoanio.getTextContent());
             }
 
         } catch (Exception e) {
